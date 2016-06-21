@@ -1,0 +1,16 @@
+{
+  "name": "deploy",
+  "version": "0.1.0",
+  "description": "webhook-automated-deployment",
+  "main": "deploy.js",
+  "bin": "deploy.js",
+  "dependencies": {
+    "github-webhook-handler": "0.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+  },
+  "keywords": [
+  ],
+  "author": "JimLao"
+}
