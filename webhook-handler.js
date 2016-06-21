@@ -1,6 +1,12 @@
 const EventEmitter = require('events').EventEmitter
     , inherits     = require('util').inherits
+    , crypto       = require('crypto')
     , bl           = require('bl')
+
+
+function signBlob (key, blob) {
+  return 'sha1=' + crypto.createHmac('sha1', key).update(blob).digest('hex')
+}
 
 
 function create (options) {
@@ -34,21 +40,23 @@ function create (options) {
       callback(err)
     }
 
+    var sig  = ''
+      , event = ''
+      , id    = ''
+
     req.pipe(bl(function (err, data) {
       if (err) {
         return hasError(err.message)
       }
 
       var obj
-        ,event
-        ,id
 
       try {
         obj = JSON.parse(data.toString())
         event=obj.hook_name
         id=obj.push_data.after
-
-        if (!obj.password||obj.password !== options.secret)
+        sig=obj.password
+          if (sig !== options.secret)
         return hasError('secret does not match blob signature')
 
       } catch (e) {
