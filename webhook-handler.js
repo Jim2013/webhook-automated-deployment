@@ -3,11 +3,6 @@ const EventEmitter = require('events').EventEmitter
     , crypto       = require('crypto')
     , bl           = require('bl')
 
-
-function signBlob (key, blob) {
-  return 'sha1=' + crypto.createHmac('sha1', key).update(blob).digest('hex')
-}
-
 function create (options) {
   if (typeof options != 'object')
     throw new TypeError('must provide an options object')
@@ -69,7 +64,7 @@ function create (options) {
       var emitData = {
           event   : event
         , id      : id
-        , payload : obj
+        , payload : obj.push_data
         , protocol: req.protocol
         , host    : req.headers['host']
         , url     : req.url
