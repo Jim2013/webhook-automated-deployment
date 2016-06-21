@@ -10,7 +10,7 @@ function signBlob (key, blob) {
 
 function uintToString(uintArray) {
     var encodedString = String.fromCharCode.apply(null, uintArray),
-        decodedString = decodeURIComponent(escape(atob(encodedString)));
+        decodedString = decodeURIComponent(escape(encodedString));
     return decodedString;
 }
 
