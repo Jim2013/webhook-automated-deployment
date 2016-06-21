@@ -21,13 +21,13 @@ http.createServer(function (req, res) {
  
 handler.on('error', function (err) {
   console.error('Error:', err.message)
-}
+})
  
 handler.on('push_hooks', function (event) {
   console.log('Received a push event for %s to %s',
     event.payload.repository.name,
     event.payload.ref);
-  run_cmd('sh', ['../coder-notes/scpts/qa/deploy.sh'], function(text){ console.log(text) });
+  run_cmd('sh', ['../coder-notes/scripts/qa/deploy.sh'], function(text){ console.log(text) });
 })
  
 /*
