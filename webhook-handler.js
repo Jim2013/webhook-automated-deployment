@@ -8,12 +8,6 @@ function signBlob (key, blob) {
   return 'sha1=' + crypto.createHmac('sha1', key).update(blob).digest('hex')
 }
 
-function uintToString(uintArray) {
-    var encodedString = String.fromCharCode.apply(null, uintArray),
-        decodedString = decodeURIComponent(escape(encodedString));
-    return decodedString;
-}
-
 function create (options) {
   if (typeof options != 'object')
     throw new TypeError('must provide an options object')
@@ -57,7 +51,7 @@ function create (options) {
       var obj
 
       try {
-        obj = JSON.parse(uintToString(data))
+        obj = JSON.parse(decodeURIComponent(data.toString().substring(5)))
         console.log(obj)
         event=obj.hook_name
         id=obj.push_data.after
