@@ -40,8 +40,8 @@ function create (options) {
       }
 
       var obj
-      var event
-      var id
+        ,event
+        ,id
 
       try {
         obj = JSON.parse(data.toString())
