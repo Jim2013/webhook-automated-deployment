@@ -1,16 +1,26 @@
 {
-  "name": "deploy",
+  "name": "webhook-automated-deployment",
   "version": "0.1.0",
   "description": "webhook-automated-deployment",
   "main": "deploy.js",
-  "bin": "deploy.js",
-  "dependencies": {
-    "github-webhook-handler": "0.5.0"
-  },
-  "devDependencies": {},
   "scripts": {
+    "test": "node test.js"
   },
   "keywords": [
+    "github",
+    "webhooks"
   ],
-  "author": "JimLao"
+  "author": "JimLao",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jim2013/webhook-automated-deployment.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bl": "~0.9.4"
+  },
+  "devDependencies": {
+    "tape": "~2.12.3",
+    "through2": "~0.4.1"
+  }
 }
