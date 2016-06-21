@@ -8,6 +8,11 @@ function signBlob (key, blob) {
   return 'sha1=' + crypto.createHmac('sha1', key).update(blob).digest('hex')
 }
 
+function uintToString(uintArray) {
+    var encodedString = String.fromCharCode.apply(null, uintArray),
+        decodedString = decodeURIComponent(escape(atob(encodedString)));
+    return decodedString;
+}
 
 function create (options) {
   if (typeof options != 'object')
@@ -40,9 +45,9 @@ function create (options) {
       callback(err)
     }
 
-    var sig  = ''
-      , event = ''
-      , id    = ''
+    var sig  = '';
+    var event = '';
+    var id    = '';
 
     req.pipe(bl(function (err, data) {
       if (err) {
@@ -52,7 +57,8 @@ function create (options) {
       var obj
 
       try {
-        obj = JSON.parse(data.toString())
+        obj = JSON.parse(uintToString(data))
+        console.log(obj)
         event=obj.hook_name
         id=obj.push_data.after
         sig=obj.password
