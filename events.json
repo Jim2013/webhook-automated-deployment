@@ -18,5 +18,11 @@
   "release": "Any time a Release is published in the Repository",
   "status": "Any time a Repository has a status update from the API",
   "team_add": "Any time a team is added or modified on a Repository",
-  "watchAny": "time a User watches the Repository"
+  "watchAny": "time a User watches the Repository",
+  //oschina event
+  "push_hooks":"Any git push to a Repository",
+  "tag_push_hooks":"",
+  "issue_hooks":"",
+  "note_hooks":"",
+  "merge_request_hooks":"Any time a merge Request is opened"
 }
